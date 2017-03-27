@@ -9,17 +9,17 @@ error_reporting(E_ALL);
 class Conf
 {
  const DEF_APP = 'Test Application';
-
+/*
  const DB_HOST = 'localhost';
  const DB_NAME   = 'kiosk';
  const DB_USERNAME = 'davidcurbina';
  const DB_PASSWORD = 'Password';
-/*
+*/
  $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
   const DB_HOST = $url["host"];
   const DB_USERNAME = $url["user"];
   const DB_PASSWORD = $url["pass"];
-  const DB_NAME = substr($url["path"],1);*/
+  const DB_NAME = substr($url["path"],1);
 }
 ?>
