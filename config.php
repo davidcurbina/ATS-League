@@ -15,11 +15,10 @@ class Conf
  const DB_USERNAME = 'davidcurbina';
  const DB_PASSWORD = 'Password';
 */
- $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-  const DB_HOST = $url["host"];
-  const DB_USERNAME = $url["user"];
-  const DB_PASSWORD = $url["pass"];
-  const DB_NAME = substr($url["path"],1);
+ 
+  const DB_HOST = "us-cdbr-iron-east-03.cleardb.net";
+  const DB_USERNAME = "b65ad6fc98e041";
+  const DB_PASSWORD = "d91b216f";
+  const DB_NAME = "heroku_b42a4752efa0e9d";
 }
 ?>
