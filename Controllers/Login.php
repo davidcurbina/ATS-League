@@ -2,7 +2,6 @@
 class Login extends Controller{
 	public static function ValidateUser($username, $password){
 		
-		echo "Here at the Validation Section"; 
 		//Sanatizing input
 		$username = Database::escape_data($username);
 		$password = Database::escape_data($password);
