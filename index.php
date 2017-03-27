@@ -1,12 +1,14 @@
 <?php
 require('routes.php');
-echo $_SERVER['DOCUMENT_ROOT'];
 //Function to AutoLoad all classes and controllers
 function __autoload($file_name){
-	if(file_exists('./Classes/'.$file_name.'.php')){
-		require_once('./Classes/'.$file_name.'.php');
+	$root = $_SERVER['DOCUMENT_ROOT'];
+	if(file_exists($root.'/Classes/'.$file_name.'.php')){
+		require_once($root.'/Classes/'.$file_name.'.php');
+		echo "Loaded classses";
 	} else if (file_exists('./Controllers/'.$file_name.'.php')){
-		require_once('./Controllers/'.$file_name.'.php');
+		require_once($root.'/Controllers/'.$file_name.'.php');
+		echo "Loaded controllers";
 	}
 }
 ?>
