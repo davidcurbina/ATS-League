@@ -1,7 +1,6 @@
 <?php
 require('routes.php');
 
-
 //Function to AutoLoad all classes and controllers
 function __autoload($file_name){
 	if(file_exists('./Classes/'.$file_name.'.php')){
@@ -11,3 +10,4 @@ function __autoload($file_name){
 	}
 }
 ?>
+Hello World
