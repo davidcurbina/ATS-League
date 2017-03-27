@@ -3,7 +3,7 @@ require('routes.php');
 
 //Function to AutoLoad all classes and controllers
 function __autoload($file_name){
-	echo $filename."</br>";
+	echo $file_name."</br>";
 	if(file_exists('Classes/'.$file_name.'.php')){
 		require_once('Classes/'.$file_name.'.php');
 		echo "Class Files Loaded";
