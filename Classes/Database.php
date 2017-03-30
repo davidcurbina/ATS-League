@@ -41,8 +41,18 @@ class Database{
 		}
         // Query the database
         $result = self::$dbc -> query($query);
-
         return $result;
+    }
+	
+	public static function modify($query) {
+        $rows = array();
+        $result = self::query($query);
+        if($result === false) {
+			//print_r("No Results found");
+            return false;
+        }
+		//print_r($rows);
+        return true;
     }
 	
 	public static function select($query) {

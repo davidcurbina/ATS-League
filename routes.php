@@ -1,15 +1,20 @@
 <?php
 
 Route::set('login', function(){
-	
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		Login::ValidateUser($_POST['email'],$_POST['password']);
 	} else {
-		Login::CreateView('login');
+		Login::CreateView('login',$_GET['var']);
 	}
 });
 
 Route::set('main', function(){
-	echo "Main Page";
+	Main::CreateView('main','');
+});
+
+Route::set('create_record', function(){
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		Record::CreateRecord(file_get_contents('php://input'));
+	}
 });
 ?>

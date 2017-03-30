@@ -8,9 +8,9 @@ class Login extends Controller{
 		
 		//Validating User
 		if($users = Database::select("Select * from users where username ='".$username. "' and password = ".$password)){
-			echo "User found";
+			Main::CreateView('main','');
 		} else {
-			echo "User not found";
+			Login::CreateView('login','Username or Password incorrect.');
 		}
 	}
 }

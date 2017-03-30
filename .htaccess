@@ -1,2 +1,3 @@
 ReWriteEngine On
+ReWriteRule ^Public/(.*)$ Public/$1 [L,QSA]
 ReWriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
