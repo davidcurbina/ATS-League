@@ -1,7 +1,8 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 require('routes.php');
-
-
 //Function to AutoLoad all classes and controllers
 function __autoload($file_name){
 	

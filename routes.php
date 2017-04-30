@@ -1,5 +1,7 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 Route::set('login', function(){
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		Login::ValidateUser($_POST['email'],$_POST['password']);
