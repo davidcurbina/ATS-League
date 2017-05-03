@@ -19,4 +19,10 @@ Route::set('create_record', function(){
 		Record::CreateRecord(file_get_contents('php://input'));
 	}
 });
+
+Route::set('employee_list', function(){
+	if($_SERVER['REQUEST_METHOD'] == 'GET'){
+		Record::GetEmployees();
+	}
+});
 ?>

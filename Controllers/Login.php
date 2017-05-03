@@ -8,6 +8,8 @@ class Login extends Controller{
       //Validating User
       if($users = Database::select("Select * from users where username ='".$username. "' and password = ".$password)){
         $_SESSION["authenticated"] = true;
+      } else {
+        $_SESSION["authenticated"] = false;
       }
       Main::CreateView('main','');
 	}
