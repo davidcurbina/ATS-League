@@ -19,7 +19,7 @@ class Record{
             echo "Error: Insert data failed";
         }
       }else {
-        if(Database::modify("Insert into records (emp_id,type,check_out) Values (".$emp_id.",'".$type."','".$date."');")){
+        if(Database::modify("update records set check_out='".$date."' where emp_id =".$emp_id." and check_out is null")){
             echo "Success";
         } else{
             echo "Error: Insert data failed";
