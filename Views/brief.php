@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Kiosk Manager</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="Public/css/bootstrap.min.css" rel="stylesheet">
@@ -31,11 +31,8 @@
     <![endif]-->
 
 </head>
-
 <body>
-
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -53,10 +50,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                  <li>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                  </li>
-                  <li>
-                      <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                  <li><a href="main.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                   </li>
                   <h3 style="color:white;padding-left:10px">Reports</h3>
                   <li>

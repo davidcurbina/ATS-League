@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Kiosk Manager</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="Public/css/bootstrap.min.css" rel="stylesheet">
@@ -56,9 +56,6 @@
                   <li class="active">
                       <a href="main.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                   </li>
-                  <li>
-                      <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                  </li>
                   <h3 style="color:white;padding-left:10px">Reports</h3>
                   <li>
                       <a href="full.php">Full Department</a>
@@ -67,7 +64,7 @@
                       <a href="brief.php">Breif Department</a>
                   </li>
                   <li>
-                      <a href="charts.html">Employee</a>
+                      <a href="employee.php">Employee</a>
                   </li>
                   <li>
                       <a href="timecard.php">Time Card</a>
@@ -95,43 +92,6 @@
                 
                 <!-- /.row -->
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                      <div><h1>Create Employee</h1></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                      <div><h1>Create Department</h1></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                      <div><h1>Create Location</h1></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
                   <!--
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-green">
