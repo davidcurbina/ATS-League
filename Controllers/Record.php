@@ -6,10 +6,11 @@ class Record{
     $type = Database::escape_data($record->type);
     $action = Database::escape_data($record->action);
     $timestamp = Database::escape_data($record->timeStamp);
+    $formatted = date('Y-m-d H:i:s', intval($timestamp) / 1000);
     
     if($exists = Database::select("Select * from employees where id =".$emp_id)){
       if($action  == "in"){
-        if(Database::modify("Insert into records (emp_id,type,check_in) Values (".$emp_id.",'".$timestamp."','".$timestamp."');")){
+        if(Database::modify("Insert into records (emp_id,type,check_in) Values (".$emp_id.",'".$type."','".$formatted."');")){
             echo "Success";
         } else{
             echo "Error: Insert data failed";
