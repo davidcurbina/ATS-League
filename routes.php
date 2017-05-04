@@ -20,9 +20,39 @@ Route::set('create_record', function(){
 	}
 });
 
+Route::set('create_location', function(){
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		Location::CreateLocation(file_get_contents('php://input'));
+	}
+});
+
+Route::set('create_department', function(){
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		Department::CreateDepartment(file_get_contents('php://input'));
+	}
+});
+
+Route::set('create_employee', function(){
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		Employee::CreateEmployee(file_get_contents('php://input'));
+	}
+});
+
 Route::set('employee_list', function(){
 	if($_SERVER['REQUEST_METHOD'] == 'GET'){
-		Record::GetEmployees();
+      Employee::GetEmployees();
+	}
+});
+
+Route::set('query', function(){
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $request = json_decode(file_get_contents('php://input'));
+      $type = Database::escape_data($request->type);
+      $params = Database::escape_data($request->params);
+      
+      if($type == "get_clocked_in"){
+        Employee::GetClockedIn($params);
+      }
 	}
 });
 ?>
