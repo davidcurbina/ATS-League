@@ -14,6 +14,22 @@ Route::set('main', function(){
 	Main::CreateView('main','');
 });
 
+Route::set('full', function(){
+	Main::CreateView('full','');
+});
+
+Route::set('brief', function(){
+	Main::CreateView('brief','');
+});
+
+Route::set('employee', function(){
+	Main::CreateView('employee','');
+});
+
+Route::set('timecard', function(){
+	Main::CreateView('timecard','');
+});
+
 Route::set('create_record', function(){
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		Record::CreateRecord(file_get_contents('php://input'));

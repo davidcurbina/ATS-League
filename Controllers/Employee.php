@@ -36,7 +36,76 @@ class Employee{
     And ed.emp_id = emp.id
     And rec.emp_id = ed.emp_id
     And loc.id = ld.loc_id
-    And dep.id = ld.dep_id")){
+    And dep.id = ld.dep_id
+    And check_out is null")){
+        return $exists;
+    } else {
+        echo "Employee not found";
+    }
+  }
+  
+  public static function GetFullReport(){
+    if($exists = Database::select("
+      select a.emp_id, OT, paid, dep_name, loc_name
+    from (
+    select emp_id, (sum(worked) - 40 * 0.5) OT, sum(paid) paid
+    from general
+    group by emp_id) as a,
+    (Select emp.id emp_id, first_name, last_name, dep.name dep_name, loc.name loc_name,type, check_in, check_out
+        From emp_dept ed, loc_dept ld, employees emp, records rec, locations loc, departments dep
+        Where ed.dep_loc_id = ld.id
+        And ed.emp_id = emp.id
+        And rec.emp_id = ed.emp_id
+        And loc.id = ld.loc_id
+        And dep.id = ld.dep_id) as b
+        where b.emp_id = a.emp_id
+    group by a.emp_id, OT, paid, dep_name, loc_name")){
+        return $exists;
+    } else {
+        echo "Employee not found";
+    }
+  }
+  public static function GetBriefReport(){
+    if($exists = Database::select("
+      select  OT, paid, dep_name, loc_name
+    from (
+    select emp_id, (sum(worked) - 40 * 0.5) OT, sum(paid) paid
+    from general
+    ) as a,
+    (Select emp.id emp_id, first_name, last_name, dep.name dep_name, loc.name loc_name,type, check_in, check_out
+        From emp_dept ed, loc_dept ld, employees emp, records rec, locations loc, departments dep
+        Where ed.dep_loc_id = ld.id
+        And ed.emp_id = emp.id
+        And rec.emp_id = ed.emp_id
+        And loc.id = ld.loc_id
+        And dep.id = ld.dep_id) as b
+        where b.emp_id = a.emp_id
+    group by OT, paid, dep_name, loc_name")){
+        return $exists;
+    } else {
+        echo "Employee not found";
+    }
+  }
+  
+  
+  public static function GetEmployeeReport(){
+    if($exists = Database::select("
+      Select emp.id emp_id, first_name, last_name, dep.name dep_name, loc.name loc_name
+        From emp_dept ed, loc_dept ld, employees emp, locations loc, departments dep
+        Where ed.dep_loc_id = ld.id
+        And ed.emp_id = emp.id
+        And loc.id = ld.loc_id
+        And dep.id = ld.dep_id")){
+        return $exists;
+    } else {
+        echo "Employee not found";
+    }
+  }
+  
+  public static function GetTimeCardReport(){
+    if($exists = Database::select("
+      select * 
+from general;")){
         return $exists;
     } else {
         echo "Employee not found";

@@ -53,8 +53,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                  <li class="active">
-                      <a href="main.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                  <li>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                   </li>
                   <li>
                       <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
@@ -66,8 +65,8 @@
                   <li>
                       <a href="brief.php">Breif Department</a>
                   </li>
-                  <li>
-                      <a href="charts.html">Employee</a>
+                  <li class="active">
+                      <a href="employee.php">Employee</a>
                   </li>
                   <li>
                       <a href="timecard.php">Time Card</a>
@@ -95,43 +94,7 @@
                 
                 <!-- /.row -->
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                      <div><h1>Create Employee</h1></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                      <div><h1>Create Department</h1></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                      <div><h1>Create Location</h1></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
+                
                   <!--
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-green">
@@ -165,7 +128,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Clocked In</h3>
+                                <h3 class="panel-title">Employee Department Report</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -180,11 +143,11 @@
                                         </thead>
                                         <tbody>
                                           <?php
-                                          $result = Employee::GetClockedIn();
+                                          $result = Employee::GetEmployeeReport();
                                           foreach($result as $obj){
                                             echo 
                                               "<tr>
-                                                <td>".$obj['id']."</td>
+                                                <td>".$obj['emp_id']."</td>
                                                 <td>".$obj['first_name']." ".$obj['last_name']."</td>
                                                 <td>".$obj['dep_name']."</td>
                                                 <td>".$obj['loc_name']."</td>

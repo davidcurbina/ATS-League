@@ -45,6 +45,7 @@ class Database{
     }
 	
 	public static function modify($query) {
+      echo $query;
         $rows = array();
         $result = self::query($query);
         if($result === false) {
