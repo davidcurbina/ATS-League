@@ -9,7 +9,7 @@ class Record{
     
     if($exists = Database::select("Select * from employees where id =".$emp_id)){
       if($action  == "in"){
-        if(Database::modify("Insert into records (emp_id,type,check_in) Values (".$emp_id.",'".$type."','".$timestamp."');")){
+        if(Database::modify("Insert into records (emp_id,type,check_in) Values (".$emp_id.",'".$timestamp."','".$timestamp."');")){
             echo "Success";
         } else{
             echo "Error: Insert data failed";
