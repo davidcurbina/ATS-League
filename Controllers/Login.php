@@ -6,8 +6,16 @@ class Login extends Controller{
       $password = Database::escape_data($password);
 
       //Validating User
-      if($users = Database::select("Select * from users where username ='".$username. "' and password = ".$password)){
+      $wParams = array(
+        "password" => $password,
+        "username" => $username
+      );
+      
+      if($users = Database::select(array("*"), "users", $wParams,"")){
         $_SESSION["authenticated"] = true;
+        foreach($users as $obj){
+          $_SESSION["userID"] = $obj["id"];
+        }
       } else {
         $_SESSION["authenticated"] = false;
       }

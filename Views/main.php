@@ -9,18 +9,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kiosk Manager</title>
+    <title>ATS Against The Spread</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="Public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="Public/css/sb-admin.css" rel="stylesheet">
-
+    <link href="Public/style.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="Public/css/plugins/morris.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Custom Fonts -->
+  
+    <script src="Public/script.js"></script>
     <link href="Public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -29,7 +31,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 </head>
 
 <body>
@@ -46,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Kiosk Manager</a>
+                <a class="navbar-brand" href="index.html">ATS</a>
             </div>
             <!-- Top Menu Items -->
             
@@ -54,20 +58,19 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                   <li class="active">
-                      <a href="main.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                      <a id = "makePicks">Make Picks</a>
                   </li>
-                  <h3 style="color:white;padding-left:10px">Reports</h3>
-                  <li>
-                      <a href="full.php">Full Department</a>
+                  <li id = "powerRankings">
+                      <a>Power Rankings</a>
                   </li>
-                  <li>
-                      <a href="brief.php">Breif Department</a>
+                  <li id = "allPicks">
+                      <a>This weeks Picks</a>
                   </li>
-                  <li>
-                      <a href="employee.php">Employee</a>
+                  <li id = "notes">
+                    <a>Commissioners Notes</a>
                   </li>
-                  <li>
-                      <a href="timecard.php">Time Card</a>
+                  <li id = "create">
+                    <a>Admin</a>
                   </li>
                 </ul>
             </div>
@@ -79,98 +82,29 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
-                        </h1>
-                        
-                    </div>
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <h1 id="headerValue" class="page-header">
+                          </h1>
+                      </div>
+                  </div>
                 </div>
-                <!-- /.row -->
-
-                
-                <!-- /.row -->
-
-                  <!--
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-tasks fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
-                                        <div>New Tasks!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
--->
-                </div>
-                <!-- /.row -->
-
-                <!-- /.row -->
-
+          
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Clocked In</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                              <th>Employee #</th>
-                                              <th>Employee Name</th>
-                                              <th>Department</th>
-                                              <th>Location</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                          <?php
-                                          $result = Employee::GetClockedIn();
-                                          foreach($result as $obj){
-                                            echo 
-                                              "<tr>
-                                                <td>".$obj['id']."</td>
-                                                <td>".$obj['first_name']." ".$obj['last_name']."</td>
-                                                <td>".$obj['dep_name']."</td>
-                                                <td>".$obj['loc_name']."</td>
-                                            </tr>";
-                                          }
-                                          ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div id= "mainBody" class="panel-body">
+                                
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
-
             </div>
-            <!-- /.container-fluid -->
-
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

@@ -18,9 +18,7 @@ class Database{
 			exit();
 		}
 	}
-	
 	public static function escape_data($data){
-		
 		if(!self::$dbc){
         	self::connect();
 		}
@@ -44,30 +42,102 @@ class Database{
         return $result;
     }
 	
-	public static function modify($query) {
-      echo $query;
+	public static function modify($type, $table, $fieldValues, $fieldValues2, $oCondition) {
+      $statement = "";
+      $i = 0;
+      
+      if($type == "INSERT"){
+        $statement = "INSERT INTO ";
+        
+        $table = self::escape_data($table);
+        $statement .= $table." (";
+        foreach($fieldValues as $field => $value){
+          if($i == 0){
+            $statement .= $field;
+          } else {
+            $statement .= ",".$field;
+          }
+          $i++;
+        }
+        $statement .= ") VALUES (";
+        $i=0;
+        foreach($fieldValues as $field => $value){
+          if($i == 0){
+            $statement .= "'".$value."'";
+          } else {
+            $statement .= ",'".$value."'";
+          }
+          $i++;
+        }
+        $statement .= ")";
+      } else if($type == "UPDATE"){
+        $statement = "UPDATE ";
+        
+        $table = self::escape_data($table)." ";
+        $statement .= $table. "SET ";
+        foreach($fieldValues as $field => $value){
+          if($i == 0){
+            $statement .= self::escape_data($field)." = '".self::escape_data($value)."' ";
+          } else {
+            $statement .= ", ".self::escape_data($field)." = '".self::escape_data($value)."' ";
+          }
+          $i++;
+        }
+        $i=0;
+        foreach($fieldValues2 as $field => $value){
+          if($i == 0){
+            $statement .= " WHERE ".self::escape_data($field)." = '".self::escape_data($value)."' ";
+          } else {
+            $statement .= "AND ".self::escape_data($field)." = '".self::escape_data($value)."'";
+          }
+          $i++;
+        }
+      }
+      $oCondition = self::escape_data($oCondition);
+      $statement .= $oCondition;
+      //echo $statement;
         $rows = array();
-        $result = self::query($query);
+        $result = self::query($statement);
         if($result === false) {
-			//print_r("No Results found");
             return false;
         }
 		//print_r($rows);
         return true;
     }
 	
-	public static function select($query) {
-        $rows = array();
-        $result = self::query($query);
-        if($result === false) {
-			//print_r("No Results found");
-            return false;
+	public static function select($fields, $table, $wCondition, $oCondition) {
+      //Build SQL
+      $statement = "SELECT ";
+      foreach($fields as $value){
+        $value = self::escape_data($value);
+        $statement .= $value." ";
+      }
+      $table = self::escape_data($table);
+      $statement .= "FROM ".$table;
+      $i = 0;
+      foreach($wCondition as $field => $value){
+        if($i == 0){
+          $statement .= " WHERE ".self::escape_data($field)." = '".self::escape_data($value)."' ";
+        } else {
+          $statement .= "AND ".self::escape_data($field)." = '".self::escape_data($value)."'";
         }
-        while ($row = $result -> fetch_assoc()) {
-            $rows[] = $row;
-        }
-		//print_r($rows);
-        return $rows;
+        $i++;
+      }
+      
+      $oCondition = self::escape_data($oCondition);
+      $statement .= " ".$oCondition;
+      
+      //echo $statement;
+      //Return Results array
+      $rows = array();
+      $result = self::query($statement);
+      if($result === false) {
+          return false;
+      }
+      while ($row = $result -> fetch_assoc()) {
+          $rows[] = $row;
+      }
+      return $rows;
     }
 }
 ?>

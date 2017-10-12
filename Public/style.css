@@ -1,14 +1,15 @@
 body {
     font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
     color: #404040;
-    background-image: url("bg2.jpg");
+    background-image: url("BG.png");
+  background-size: cover;
     background-repeat: no-repeat;
 }
 
 input[type=checkbox],
 input[type=radio] {
     border: 1px solid #c0c0c0;
-    margin: 0 0.1em 0 0;
+    margin: 0 5px 0 5px;
     padding: 0;
     font-size: 16px;
     line-height: 1em;
@@ -43,9 +44,31 @@ select {
     color: #444;
 }
 
+.home{
+  text-align: right;
+}
+
+.favorite{
+  color: white;
+  background: red;
+  padding: 3px;
+  border: solid;
+  border-color: peru;
+  border-radius: 5px;
+  border-width: thin;
+}
+
+.away{
+  text-align: left;
+}
+
+.game-checkbox{
+  text-align: center;
+}
+
 .container {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform:translate(-50%,-50%);
 }
